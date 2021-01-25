@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:movie_app/domain/entities/movie_entity.dart';
+import 'package:movie_app/presentation/widgets/movie_app_bar.dart';
+import 'package:movie_app/presentation/widgets/separator.dart';
+import 'movie_backdrop_widget.dart';
+import 'movie_data_widget.dart';
+import 'movie_page_view.dart';
 
 class MovieCarouselWidget extends StatelessWidget {
   final List<MovieEntity> movies;

@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/common/extensions/size_extension.dart';
+import 'package:movie_app/common/constants/sizes.dart';
+
 import 'package:movie_app/common/screenutil/screen_util.dart';
 import 'package:movie_app/domain/entities/movie_entity.dart';
+import 'package:movie_app/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
+
+import 'animated_movie_card_widget.dart';
 
 class MoviePageView extends StatefulWidget {
   final List<MovieEntity> movies;

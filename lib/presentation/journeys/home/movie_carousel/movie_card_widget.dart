@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
+import 'package:movie_app/common/extensions/size_extension.dart';
 import 'package:movie_app/common/constants/sizes.dart';
 import 'package:movie_app/data/core/api_constants.dart';
 
