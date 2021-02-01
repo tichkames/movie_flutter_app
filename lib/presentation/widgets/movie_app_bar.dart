@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:movie_app/common/constants/sizes.dart';
-import 'package:movie_app/common/extensions/size_extension.dart';
-import 'package:movie_app/common/screenutil/screen_util.dart';
 
+import '../../common/constants/size_constants.dart';
+import '../../common/extensions/size_extensions.dart';
+import '../../common/screenutil/screenutil.dart';
 import 'logo.dart';
 
 class MovieAppBar extends StatelessWidget {
@@ -18,7 +18,9 @@ class MovieAppBar extends StatelessWidget {
       child: Row(
         children: <Widget>[
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
             icon: SvgPicture.asset(
               'assets/svgs/menu.svg',
               height: Sizes.dimen_12.h,

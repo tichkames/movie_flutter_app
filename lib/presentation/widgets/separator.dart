@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/common/constants/sizes.dart';
-import 'package:movie_app/common/extensions/size_extension.dart';
-import 'package:movie_app/presentation/themes/app_color.dart';
+import 'package:movie_app/common/constants/size_constants.dart';
+import 'package:movie_app/common/extensions/size_extensions.dart';
+import 'package:movie_app/presentation/themes/theme_color.dart';
 
 class Separator extends StatelessWidget {
   @override

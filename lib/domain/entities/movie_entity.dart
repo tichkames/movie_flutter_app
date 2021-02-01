@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 class MovieEntity extends Equatable {
   final String posterPath;
@@ -8,8 +7,8 @@ class MovieEntity extends Equatable {
   final String backdropPath;
   final String title;
   final num voteAverage;
-  final releaseDate;
-  final overview;
+  final String releaseDate;
+  final String overview;
 
   const MovieEntity({
     @required this.posterPath,

@@ -6,11 +6,12 @@ import 'package:movie_app/domain/repositories/movie_repository.dart';
 import 'package:movie_app/domain/usecases/usecase.dart';
 
 class GetPlayingNow extends UseCase<List<MovieEntity>, NoParams> {
-  final MovieRepository movieRepository;
+  final MovieRepository repository;
 
-  GetPlayingNow(this.movieRepository);
+  GetPlayingNow(this.repository);
 
+  @override
   Future<Either<AppError, List<MovieEntity>>> call(NoParams noParams) async {
-    return await movieRepository.getPlayingNow();
+    return await repository.getPlayingNow();
   }
 }

@@ -1,51 +1,75 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:movie_app/data/data_sources/movie_remote_data_source.dart';
+import 'package:movie_app/data/models/movie_detail_model.dart';
 import 'package:movie_app/data/models/movie_model.dart';
 import 'package:movie_app/domain/entities/app_error.dart';
+import 'package:movie_app/domain/entities/movie_entity.dart';
 import 'package:movie_app/domain/repositories/movie_repository.dart';
 
-class MovieRepositoryImpl extends MovieRepository{
-  final MovieRemoteDataSource movieRemoteDataSource;
+class MovieRepositoryImpl extends MovieRepository {
+  final MovieRemoteDataSource remoteDataSource;
 
-  MovieRepositoryImpl(this.movieRemoteDataSource);
+  MovieRepositoryImpl(this.remoteDataSource);
 
   @override
   Future<Either<AppError, List<MovieModel>>> getTrending() async {
     try {
-      final movies = await movieRemoteDataSource.getTrending();
+      final movies = await remoteDataSource.getTrending();
       return Right(movies);
-    } catch (e) {
-      return Left(AppError(e.toString()));
+    } on SocketException {
+      return Left(AppError(AppErrorType.network));
+    } on Exception {
+      return Left(AppError(AppErrorType.api));
     }
   }
 
   @override
-  Future<Either<AppError, List<MovieModel>>> getComingSoon() async {
+  Future<Either<AppError, List<MovieEntity>>> getComingSoon() async {
     try {
-      final movies = await movieRemoteDataSource.getComingSoon();
+      final movies = await remoteDataSource.getComingSoon();
       return Right(movies);
-    } catch (e) {
-      return Left(AppError(e.toString()));
+    } on SocketException {
+      return Left(AppError(AppErrorType.network));
+    } on Exception {
+      return Left(AppError(AppErrorType.api));
     }
   }
 
   @override
-  Future<Either<AppError, List<MovieModel>>> getPlayingNow() async {
+  Future<Either<AppError, List<MovieEntity>>> getPlayingNow() async {
     try {
-      final movies = await movieRemoteDataSource.getPlayingNow();
+      final movies = await remoteDataSource.getPlayingNow();
       return Right(movies);
-    } catch (e) {
-      return Left(AppError(e.toString()));
+    } on SocketException {
+      return Left(AppError(AppErrorType.network));
+    } on Exception {
+      return Left(AppError(AppErrorType.api));
     }
   }
 
   @override
-  Future<Either<AppError, List<MovieModel>>> getPopular() async {
+  Future<Either<AppError, List<MovieEntity>>> getPopular() async {
     try {
-      final movies = await movieRemoteDataSource.getPopular();
+      final movies = await remoteDataSource.getPopular();
       return Right(movies);
-    } catch (e) {
-      return Left(AppError(e.toString()));
+    } on SocketException {
+      return Left(AppError(AppErrorType.network));
+    } on Exception {
+      return Left(AppError(AppErrorType.api));
+    }
+  }
+
+  @override
+  Future<Either<AppError, MovieDetailModel>> getMovieDetail(int id) async {
+    try {
+      final movie = await remoteDataSource.getMovieDetail(id);
+      return Right(movie);
+    } on SocketException {
+      return Left(AppError(AppErrorType.network));
+    } on Exception {
+      return Left(AppError(AppErrorType.api));
     }
   }
 }

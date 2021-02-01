@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'package:movie_app/common/extensions/size_extension.dart';
-import 'package:movie_app/common/constants/sizes.dart';
-import 'package:movie_app/common/screenutil/screen_util.dart';
+import 'package:movie_app/common/constants/size_constants.dart';
+import 'package:movie_app/common/extensions/size_extensions.dart';
+import 'package:movie_app/common/screenutil/screenutil.dart';
 
 import 'movie_card_widget.dart';
 
